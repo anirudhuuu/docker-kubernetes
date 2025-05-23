@@ -2,20 +2,20 @@
 
 ## Containers
 
-![Containers](./docker%20containers.png)
+![Containers](./01-containers/docker%20containers.png)
 
 ## How?
 
-![under the hood](./under%20the%20hood%20docker.png)
+![under the hood](./01-containers/under%20the%20hood%20docker.png)
 
 ## Why?
 
-![why](./why%20to%20use.png)
+![why](./01-containers/why%20to%20use.png)
 
 ## Working
 
-![working](./docker%20working.png)
+![working](./01-containers/docker%20working.png)
 
 ## Commands
 
-![Commands](./docker%20commands.png)
+![Commands](./01-containers/docker%20commands.png)
