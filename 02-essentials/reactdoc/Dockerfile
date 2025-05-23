@@ -5,9 +5,11 @@ FROM node:22-alpine
 WORKDIR /app
 
 # Copy dependency definition files to the working directory
-COPY package.json ./
-COPY package-lock.json ./
-# Alternatively, you can use: COPY package*.json ./
+COPY package*.json ./
+
+# Alternatively, you can use that will not be cached
+# COPY package.json ./
+# COPY package-lock.json ./
 
 # Install project dependencies
 RUN npm install
