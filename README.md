@@ -32,6 +32,9 @@
 
 ### Dockerfile
 
+An overall view of working with containers is as follows:
+![overall view](./02-essentials/overall%20view.png)
+
 Plan of action will be as follows:
 
 1. Create a fresh react app
