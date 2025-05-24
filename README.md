@@ -220,7 +220,7 @@ Copy a file from the container to the host
 docker cp <container-name>:/path/to/file /path/on/host
 ```
 
-# Dockerise an Express App
+## Dockerise an Express App
 
 Build an image for an express app
 
@@ -244,10 +244,28 @@ Run a container with the image with environment variables passed in a file
 docker run -p 4000:3000 --env-file .env --rm express-app
 ```
 
-# Multi-Stage Docker build
+## Multi-Stage Docker build
 
 ```bash
 docker build -t express-mutli-stage .
 ```
 
 ![multi-stage build output](./02-essentials/docker-express-multi-stage/build%20output.png)
+
+## Networking
+
+Basic networking in docker allows containers to communicate with each other and the outside world.
+
+```bash
+docker run --rm -it busybox sh
+
+hostname
+
+ping google.com
+
+ifconfig
+
+exit
+```
+
+![basic](./03-networking/basic%20google%20ping.png)
