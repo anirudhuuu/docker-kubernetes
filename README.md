@@ -219,3 +219,27 @@ Copy a file from the container to the host
 ```bash
 docker cp <container-name>:/path/to/file /path/on/host
 ```
+
+# Dockerise an Express App
+
+Build an image for an express app
+
+```bash
+docker build -t express-app .
+```
+
+![build output](./02-essentials/docker-express-app/build%20process.png)
+
+Run a container with the image with environment variables passed in-line
+
+```bash
+docker run -p 4000:3000 -e PORT=3000 --rm express-app
+```
+
+![output of express app](./02-essentials/docker-express-app/output.png)
+
+Run a container with the image with environment variables passed in a file
+
+```bash
+docker run -p 4000:3000 --env-file .env --rm express-app
+```
