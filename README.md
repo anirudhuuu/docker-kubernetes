@@ -97,3 +97,125 @@ Optimised logs for the docker rebuild of image
 
 Output would be like following for the react app
 ![react output](./02-essentials/react%20output.png)
+
+## Common Commands
+
+Runs a container based on the image
+
+```bash
+docker run <image-name>
+```
+
+Runs a container based on the image in detached mode
+
+```bash
+docker run -d <image-name>
+```
+
+Provide a name to the container
+
+```bash
+docker run --name <container-name> <image-name>
+```
+
+Run on a specific port
+
+```bash
+docker run -p <host-port>:<container-port> <image-name>
+```
+
+Load present working directory into the container
+
+```bash
+docker run -v $(pwd):/app <image-name>
+```
+
+Execute in an interactive mode, this will allow you to run commands inside the container using `/bin/bash` or `sh` shell
+
+```bash
+docker run -it <image-name> /bin/bash
+```
+
+```bash
+docker run -it <image-name> sh
+```
+
+## More Commands
+
+List all the running containers
+
+```bash
+docker ps
+```
+
+List all the containers (including stopped ones)
+
+```bash
+docker ps -a
+```
+
+List logs of a container
+
+```bash
+docker logs <container-name>
+```
+
+Get attached to a running container, just to get inside the container
+
+```bash
+docker attach <container-name>
+```
+
+Stop a running container
+
+```bash
+docker stop <container-name>
+```
+
+Container is stuck or processing something, force stop it
+
+```bash
+docker kill <container-name>
+```
+
+Stop all the active running containers
+
+```bash
+docker stop $(docker ps -q)
+```
+
+Restart a container
+
+```bash
+docker restart <container-name>
+```
+
+Start a stopped container
+
+```bash
+docker start <container-name>
+```
+
+Remove a container
+
+```bash
+docker rm <container-name>
+```
+
+Container is busy, force remove it
+
+```bash
+docker rm -f <container-name>
+```
+
+Delete all the stopped containers
+
+```bash
+docker <container-name> prune
+```
+
+Copy a file from the container to the host
+
+```bash
+docker cp <container-name>:/path/to/file /path/on/host
+```
