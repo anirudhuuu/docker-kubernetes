@@ -269,3 +269,7 @@ exit
 ```
 
 ![basic](./03-networking/basic%20google%20ping.png)
+
+`eth0` is the default network interface in docker containers. eth stands for Ethernet network interface. `veth` stands for virtual Ethernet network interface. `docker0` is the master interface for the docker bridge network that talks to the host machine.
+
+![container networking](./03-networking/containers%20networking.png)
