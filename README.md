@@ -243,3 +243,11 @@ Run a container with the image with environment variables passed in a file
 ```bash
 docker run -p 4000:3000 --env-file .env --rm express-app
 ```
+
+# Multi-Stage Docker build
+
+```bash
+docker build -t express-mutli-stage .
+```
+
+![multi-stage build output](./02-essentials/docker-express-multi-stage/build%20output.png)
