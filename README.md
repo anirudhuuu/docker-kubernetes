@@ -273,3 +273,25 @@ exit
 `eth0` is the default network interface in docker containers. eth stands for Ethernet network interface. `veth` stands for virtual Ethernet network interface. `docker0` is the master interface for the docker bridge network that talks to the host machine.
 
 ![container networking](./03-networking/containers%20networking.png)
+
+To list all the networks in docker, you can use the following command:
+
+```bash
+docker network ls
+```
+
+| NETWORK ID   | NAME   | DRIVER | SCOPE |
+| ------------ | ------ | ------ | ----- |
+| 287fceb8c8d1 | bridge | bridge | local |
+| 30a4b9d415b7 | host   | host   | local |
+| 66118539c033 | none   | null   | local |
+
+Read more regarding network drivers in docker [here](https://docs.docker.com/engine/network/drivers/).
+
+| NETWORK TYPE     | DESCRIPTION                                                                      |
+| ---------------- | -------------------------------------------------------------------------------- |
+| bridge (default) | containers on the same host can communicate, external access needs port mapping. |
+| host             | The container shares the host's networking namespace (no isolation)              |
+| none             | No network connectivity (completely isolated)                                    |
+| overlay          | Enales multi-host networking for Swarm services                                  |
+| macvlan          | Assigns a real MAC address to the container (acts like a physical device)        |
