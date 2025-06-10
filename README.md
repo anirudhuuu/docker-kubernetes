@@ -339,3 +339,43 @@ Remove a network
 ```bash
 docker network rm <network-name>
 ```
+
+## Docker Networking Hands-on
+
+List all the networks
+
+```bash
+docker network ls
+```
+
+Create a new network
+
+```bash
+docker network create my-bridge
+```
+
+![network created](./03-networking/create%20network.png)
+
+Create a new container in the network
+
+```bash
+docker run --network my-bridge --name container1 -d nginx
+```
+
+![container created](./03-networking/container%20with%20network.png)
+
+Create another container in the same network on alpine image
+
+```bash
+docker run --network my-bridge --name container2 -d alpine sleep 3600
+```
+
+![alpine container created](./03-networking/two%20containers%20in%20same%20network.png)
+
+Ping the nginx container from the alpine container
+
+```bash
+docker exec -it container2 ping container1
+```
+
+![ping output](./03-networking/ping%20container.png)
