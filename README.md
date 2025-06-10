@@ -295,3 +295,47 @@ Read more regarding network drivers in docker [here](https://docs.docker.com/eng
 | none             | No network connectivity (completely isolated)                                    |
 | overlay          | Enales multi-host networking for Swarm services                                  |
 | macvlan          | Assigns a real MAC address to the container (acts like a physical device)        |
+
+## Networking Commands
+
+List all the networks
+
+```bash
+docker network ls
+```
+
+Inspect a network
+
+```bash
+docker network inspect <network-name>
+```
+
+Create a new network
+
+```bash
+docker network create <network-name>
+```
+
+Run a container in a specific network
+
+```bash
+docker run --network <network-name> <container-name>
+```
+
+Attach a running container to a network
+
+```bash
+docker network connect <network-name> <container-name>
+```
+
+Disconnect a container from a network
+
+```bash
+docker network disconnect <network-name> <container-name>
+```
+
+Remove a network
+
+```bash
+docker network rm <network-name>
+```
