@@ -379,3 +379,93 @@ docker exec -it container2 ping container1
 ```
 
 ![ping output](./03-networking/ping%20container.png)
+
+## Docker Compose
+
+Docker Compose is a tool for defining and running multi-container Docker applications. It allows you to define services, networks, and volumes in a single YAML file.
+
+```yml
+# Full-stack application with React frontend, Node.js backend, and PostgreSQL database
+# Uses custom network for inter-service communication
+
+# React frontend service - serves UI on port 3000
+# Waits for backend to be ready before starting
+
+# Node.js backend API service - runs on port 5001
+# Connects to PostgreSQL database using environment variables
+# Waits for database to be ready before starting
+
+# PostgreSQL database service - uses Alpine Linux for smaller image size
+# Automatically restarts if container stops
+# Data persisted using named volume 'pgdata'
+
+# Named volume for PostgreSQL data persistence
+
+# Custom bridge network for service communication
+# Allows services to communicate using service names as hostnames
+version: "3.8"
+
+services:
+  frontend:
+    build: ./frontend
+
+    ports:
+      - "3000:80"
+
+    depends_on:
+      - backend
+
+    networks:
+      - my-custom-network
+
+  backend:
+    build: ./backend
+
+    ports:
+      - "5001:5000"
+
+    environment:
+      DB_HOST: database
+      DB_USER: postgres
+      DB_PASS: password
+      DB_NAME: postgres
+
+    depends_on:
+      - database
+
+    networks:
+      - my-custom-network
+
+  database:
+    image: postgres:16-alpine
+
+    restart: always
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+    networks:
+      - my-custom-network
+
+volumes:
+  pgdata:
+
+networks:
+  my-custom-network:
+    driver: bridge
+```
+
+![compose output](./04-compose/docker%20compose%20-%201.png)
+
+![compose output 2](./04-compose/docker%20compose%20-%202.png)
+
+![compose output 3](./04-compose/docker%20compose%20-%203.png)
+
+![compose output 4](./04-compose/docker%20compose%20-%204.png)
+
+![compose output 5](./04-compose/docker%20compose%20-%205.png)
