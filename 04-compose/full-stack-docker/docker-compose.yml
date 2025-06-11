@@ -1,3 +1,21 @@
+# Full-stack application with React frontend, Node.js backend, and PostgreSQL database
+# Uses custom network for inter-service communication
+
+# React frontend service - serves UI on port 3000
+# Waits for backend to be ready before starting
+
+# Node.js backend API service - runs on port 5001
+# Connects to PostgreSQL database using environment variables
+# Waits for database to be ready before starting
+
+# PostgreSQL database service - uses Alpine Linux for smaller image size
+# Automatically restarts if container stops
+# Data persisted using named volume 'pgdata'
+
+# Named volume for PostgreSQL data persistence
+
+# Custom bridge network for service communication
+# Allows services to communicate using service names as hostnames
 version: "3.8"
 
 services:
@@ -22,7 +40,7 @@ services:
     environment:
       DB_HOST: database
       DB_USER: postgres
-      DB_PASS: postgres
+      DB_PASS: password
       DB_NAME: postgres
 
     depends_on:
